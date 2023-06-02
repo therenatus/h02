@@ -4,13 +4,19 @@ const validUsername = 'admin';
 const validPassword = 'qwerty';
 export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
+  console.log(authHeader)
   if (authHeader && authHeader.startsWith('Basic ')) {
-    const credentials = atob(authHeader.slice(6));
-    const [username, password] = credentials.split(':');
+    try{
+      const credentials = atob(authHeader.slice(6));
+      const [username, password] = credentials.split(':');
 
-    if (username === validUsername && password === validPassword) {
-      return next();
+      if (username === validUsername && password === validPassword) {
+        return next();
+      }
+    } catch{
+      res.status(401).send('Invalid Token');
     }
+
   }
   res.setHeader('WWW-Authenticate', 'Basic realm="Authentication Required"');
   res.status(401).send('Authentication Required');
