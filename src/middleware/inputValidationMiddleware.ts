@@ -5,13 +5,12 @@ const validationErrorFormatter = ({ msg, path }: any) => {
   return {
     message: msg,
     field: path,
-
   };
 };
 export const InputValidationMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const errors = validationResult(req).formatWith(validationErrorFormatter);
   if(!errors.isEmpty()) {
-    res.status(400).json({errorMessages: errors.array()})
+    res.status(400).send({errorMessages: errors.array()})
   } else {
     next();
   }
