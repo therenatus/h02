@@ -21,26 +21,26 @@ export class PostService {
   }
 
   async create (req: Request, res: Response): Promise<Response<IPost>> {
-    const blog = req.body;
-    blog.id = (+new Date()).toString();
-    data.push(blog);
-    return res.status(201).send(blog);
+    const post = req.body;
+    post.id = (+new Date()).toString();
+    data.push(post);
+    return res.status(201).send(post);
   }
 
   async update(req: Request, res: Response){
-    const blog = data.find((blog) => blog.id === req.params.id);
-    if(!blog){
+    const post = data.find((post) => post.id === req.params.id);
+    if(!post){
       return res.status(404).send('Not Found');
     }
-    Object.assign(blog, req.body);
+    Object.assign(post, req.body);
     return res.status(204).send();
   }
 
   async delete (req: Request, res: Response) {
-    const deleted = data.filter((blog) => blog.id !== req.params.id);
+    const deleted = data.filter((post) => post.id !== req.params.id);
     if(data.length > deleted.length){
       data = deleted
-      return res.status(200).send(data);
+      return res.status(204).send();
     }
     return  res.status(404).send('Not Found')
   }

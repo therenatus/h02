@@ -41,7 +41,7 @@ export class BlogService {
     const deleted = data.filter((blog) => blog.id !== req.params.id);
     if(data.length > deleted.length){
       data = deleted
-      return res.status(200).send(data);
+      return res.status(204).send();
     }
     return  res.status(404).send('Not Found')
   }
