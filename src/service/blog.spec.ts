@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import {IBlog} from "../types/blog.interface";
-
-
-const data: IBlog[] = [];
+import {data as blog} from './blog.service'
+import {data as post} from './post.service'
 
 class Test {
   async deleteAll(req: Request, res: Response) {
-    data.splice(0, data.length);
+    blog.splice(0, blog.length);
+    post.splice(0, post.length);
     res.status(204).send();
   }
 }

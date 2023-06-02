@@ -2,7 +2,7 @@ import {IPost} from "../types/post.interface";
 import { Request, Response} from "express";
 
 
-let data: IPost[] = [];
+export let data: IPost[] = [];
 type Message = {
   message: string;
 };

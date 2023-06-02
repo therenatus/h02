@@ -1,7 +1,7 @@
 import {IBlog} from "../types/blog.interface";
 import { Request, Response} from "express";
 
-let data: IBlog[] = [];
+export let data: IBlog[] = [];
 
 type Message = {
   message: string;
