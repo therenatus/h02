@@ -9,7 +9,7 @@ const service = new BlogService();
 router.get('/', service.getAll );
 router.post('/',CreateBlogDto(), InputValidationMiddleware, service.create);
 router.get('/:id', service.getOne);
-router.put('/:id', service.update);
+router.put('/:id',CreateBlogDto(), InputValidationMiddleware, service.update);
 router.delete('/:id', service.delete);
 
 
