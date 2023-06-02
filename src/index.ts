@@ -15,6 +15,7 @@ const app: Express = express();
 app.use(bodyParser());
 app.post('*', AuthMiddleware);
 app.put('*', AuthMiddleware);
+app.delete('*', AuthMiddleware);
 app.use('/api', router);
 
 

@@ -4,7 +4,6 @@ const validUsername = 'admin';
 const validPassword = 'qwerty';
 export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
-  console.log(authHeader)
   if (authHeader && authHeader.startsWith('Basic ')) {
     try{
       const credentials = atob(authHeader.slice(6));
