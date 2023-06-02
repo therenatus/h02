@@ -5,8 +5,8 @@ import  blogTestController from './blog.controller.spec'
 
 const router = express.Router();
 
-router.use('/blog', blogController);
-router.use('/post', postController);
-router.use("/testing", blogTestController);
+router.use('/blogs', blogController);
+router.use('/posts', postController);
+router.use('/testing', blogTestController);
 
 export default router;

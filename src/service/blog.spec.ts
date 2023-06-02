@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import {IBlog} from "../types/blog.interface";
 import {data as blog} from './blog.service'
 import {data as post} from './post.service'
 
