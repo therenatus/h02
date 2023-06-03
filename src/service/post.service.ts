@@ -1,5 +1,6 @@
 import {IPost} from "../types/post.interface";
 import { Request, Response} from "express";
+import {data as blogs} from './blog.service';
 
 
 export let data: IPost[] = [];
@@ -22,6 +23,8 @@ export class PostService {
 
   async create (req: Request, res: Response): Promise<Response<IPost>> {
     const post = req.body;
+    const blog = blogs.find((blog) => blog.id === req.body.blogId);
+    post.blogName = blog?.name;
     post.id = (+new Date()).toString();
     data.push(post);
     return res.status(201).send(post);

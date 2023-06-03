@@ -10,7 +10,7 @@ const validationErrorFormatter = ({ msg, path }: any) => {
 export const InputValidationMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const errors = validationResult(req).formatWith(validationErrorFormatter);
   if(!errors.isEmpty()) {
-    res.status(400).send({errorsMessages: errors.array()})
+    res.status(400).send({errorsMessages: errors.array()[0]})
   } else {
     next();
   }

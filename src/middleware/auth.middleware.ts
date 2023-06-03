@@ -11,6 +11,8 @@ export const AuthMiddleware = (req: Request, res: Response, next: NextFunction) 
 
       if (username === validUsername && password === validPassword) {
         return next();
+      }else {
+        res.status(401).send('Invalid Token');
       }
     } catch{
       res.status(401).send('Invalid Token');
