@@ -8,9 +8,12 @@ export const CreatePostDto = () => {
     body('content').trim().isLength({min: 1, max: 1000}),
     body('blogId').trim().isString().custom(blogId => {
       const blog = data.find(blog => blog.id === blogId)
+      console.log(blog)
       if(!blog) {
-        throw new Error('BlogID not found')
+        console.log('eeee')
+        throw new Error('BlogID not found');
       }
+      console.log('done');
       return true;
     })
   ];

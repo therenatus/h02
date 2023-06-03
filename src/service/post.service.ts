@@ -24,6 +24,10 @@ export class PostService {
   async create (req: Request, res: Response): Promise<Response<IPost>> {
     const post = req.body;
     const blog = blogs.find((blog) => blog.id === req.body.blogId);
+    const unique = data.find((post) => post.blogId !== req.body.blogId);
+    if(!unique) {
+      res.status(401).send
+    }
     post.blogName = blog?.name;
     post.id = (+new Date()).toString();
     data.push(post);
